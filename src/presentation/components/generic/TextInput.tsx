@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { TextInput as RNTextInput, TextInputProps, View } from "react-native";
-import Ptext from "./PText";
+import Ptext from "./PoppinsText";
 
 type TextInputPropsExtended = TextInputProps & {
   label?: string;
@@ -32,7 +32,7 @@ export default function TextBox({
         </Ptext>
       )}
       <RNTextInput
-        className={`bg-zinc-50 border border-gray-300 rounded-lg px-3 py-2 text-xl text-black h-14 ${inputClassName ?? ""}`}
+        className={`bg-zinc-50 border border-gray-400 rounded-lg px-3 py-2 text-xl text-black h-14 ${inputClassName ?? ""}`}
         placeholderTextColor={placeholderTextColor}
         {...rest}
       />

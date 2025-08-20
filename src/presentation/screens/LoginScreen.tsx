@@ -5,9 +5,8 @@ import LoginBox from "../components/specific/LoginBox";
 export default function LoginScreen() {
   return (
         <KeyboardScreenWrapper>
-            <LandingSplash />
+            <LandingSplash />  
             <LoginBox />
         </KeyboardScreenWrapper>
-    
   );
 }

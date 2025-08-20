@@ -44,14 +44,16 @@ export default function LoginBox() {
           value={email}
           onChangeText={setEmail}
           error={errors?.email || ""}
+          keyboardType="email-address"
         />
       )}
 
       <TextBox
-        placeholder={LoginTexts.loginPlaceholder}
+        placeholder={LoginTexts.PhonePlaceholder}
         value={phone}
         onChangeText={setPhone}
         error={errors?.phone || ""}
+        keyboardType="phone-pad"
       />
 
       <TextBox

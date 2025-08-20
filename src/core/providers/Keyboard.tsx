@@ -1,12 +1,12 @@
 // src/components/generic/KeyboardScreenWrapper.tsx
 import React, { ReactNode } from "react";
 import {
-    Keyboard,
-    KeyboardAvoidingView,
-    Platform,
-    ScrollView,
-    TouchableWithoutFeedback,
-    View,
+  Keyboard,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  TouchableWithoutFeedback,
+  View,
 } from "react-native";
 
 type Props = {

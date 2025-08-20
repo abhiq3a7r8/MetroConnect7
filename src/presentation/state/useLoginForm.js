@@ -12,7 +12,6 @@ export default function useLoginForm() {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const toggleForm = () => setIsSignUp((prev) => !prev);
 
   const [errors, setErrors] = useState({
     email: "",
@@ -21,8 +20,23 @@ export default function useLoginForm() {
     confirmPassword: "",
   });
 
-  const validateForm = (isSignUp) => {
-    const newErrors = {};
+  const toggleForm = () => {
+    setIsSignUp(prev => !prev);
+    setErrors({
+      email: "",
+      phone: "",
+      password: "",
+      confirmPassword: "",
+    });
+  };
+
+  const validateForm = () => {
+    const newErrors = {
+      email: "",
+      phone: "",
+      password: "",
+      confirmPassword: "",
+    };
 
     if (isSignUp) {
       const emailError = validateEmail(email);
@@ -39,7 +53,8 @@ export default function useLoginForm() {
     if (passwordError) newErrors.password = passwordError;
 
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    // return true if all errors are empty
+    return Object.values(newErrors).every(err => err === "");
   };
 
   return {

@@ -4,7 +4,7 @@ export const LoginTexts = {
   Email: "Email",
   welcomeSubtitle: "Let's get you signed in!",
   welcomeSubtitle2: "Lets get started",
-  loginPlaceholder: "Phone Number",
+  PhonePlaceholder: "Phone Number",
   passwordPlaceHolder: "Password",
   ConfirmPasswordPlaceHolder: "Confirm Password",
   signInButton: "Sign In",

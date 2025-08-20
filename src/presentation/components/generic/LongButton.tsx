@@ -1,5 +1,5 @@
 import { TouchableOpacity, TouchableOpacityProps } from "react-native";
-import Ptext from "./PText";
+import Ptext from "./PoppinsText";
 
 type LongButtonProps = TouchableOpacityProps & {
   title: string;

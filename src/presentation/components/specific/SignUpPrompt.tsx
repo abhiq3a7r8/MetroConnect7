@@ -1,5 +1,5 @@
 import { TouchableOpacity, View } from "react-native";
-import Ptext from "../generic/PText";
+import Ptext from "../generic/PoppinsText";
 
 type SignUpPromptProps = {
   isSignUp: boolean;

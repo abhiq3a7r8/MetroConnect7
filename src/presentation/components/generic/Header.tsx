@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import Ptext from "./PText";
+import Ptext from "./PoppinsText";
 
 type HeaderProps = {
   title: string;
