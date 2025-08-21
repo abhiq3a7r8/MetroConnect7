@@ -24,7 +24,7 @@ export default function KeyboardScreenWrapper({ children }: Props) {
         keyboardShouldPersistTaps="handled"
       >
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-          <View className="flex-1 items-center justify-evenly bg-zinc-100">
+          <View className="flex-1 items-center justify-evenly bg-zinc-200">
             {children}
           </View>
         </TouchableWithoutFeedback>

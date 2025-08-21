@@ -28,9 +28,7 @@ export default function Layout() {
   return (
     <AuthProvider>
       <NotificationProvider>
-        <View className="flex-1 bg-red-200">
           <Stack screenOptions={{ headerShown: false }} />
-        </View>
       </NotificationProvider>
     </AuthProvider>
   );
