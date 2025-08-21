@@ -6,7 +6,10 @@ import LongButton from "../generic/LongButton";
 import TextBox from "../generic/TextInput";
 import SignUpPrompt from "./SignUpPrompt";
 
+
 export default function LoginBox() {
+  
+
   const {
     isSignUp,
     email,
@@ -19,15 +22,11 @@ export default function LoginBox() {
     setConfirmPassword,
     toggleForm,
     errors,
-    validateForm,
+    loading,
+    handleSubmit,
   } = useLoginForm();
 
-  const handleSubmit = () => {
-    const isValid = validateForm();
-    if (isValid) {
-      console.log("Form submitted", { email, phone, password, confirmPassword });
-    }
-  };
+  
 
   return (
     <Card>
@@ -77,6 +76,7 @@ export default function LoginBox() {
       <LongButton
         title={isSignUp ? LoginTexts.signUpButton : LoginTexts.signInButton}
         onPress={handleSubmit}
+        loading={loading}
       />
 
       <SignUpPrompt isSignUp={isSignUp} toggleForm={toggleForm} />

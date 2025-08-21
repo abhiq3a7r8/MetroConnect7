@@ -30,3 +30,16 @@
 │   └── core/                    # App-wide setup & providers
 │       ├── config/              # API keys, environment variables, app configuration
 │       └── providers/           # Context providers (theme, auth, etc.)
+
+frontend - React Native with EXPO framework , MVVM (Model View ViewModel ) Architecture 
+backend  - ExressJS with (  ) Architecture
+concepts - error handling , user session , Security using JWT , state management , modular design , hooks , providers
+application Security - JWT , protected routes and view 
+code organization clearnup 
+modularization of code , cohesion and coupling 
+
+
+AGENDA : - 
+    - protected routes and protected screens 
+    - JWT utilization 
+    - testing and error propogation 

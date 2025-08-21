@@ -1,3 +1,6 @@
+import { useAuthContext } from "@/src/core/providers/AuthProvider";
+import { useNotify } from "@/src/core/providers/Notification";
+import { router } from "expo-router";
 import { useState } from "react";
 import {
   validateConfirmPassword,
@@ -12,6 +15,9 @@ export default function useLoginForm() {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const { login, register } = useAuthContext();
+  const { showNotification } = useNotify();
 
   const [errors, setErrors] = useState({
     email: "",
@@ -53,8 +59,36 @@ export default function useLoginForm() {
     if (passwordError) newErrors.password = passwordError;
 
     setErrors(newErrors);
-    // return true if all errors are empty
+    
     return Object.values(newErrors).every(err => err === "");
+  };
+
+    const handleSubmit = async () => {
+    const isValid = validateForm();
+    if (!isValid) return;
+
+    try {
+      setLoading(true);
+      if (isSignUp) {
+        const newUser = await register({ email, phone, password });
+        showNotification("Welcome " + newUser.email, "success");
+        
+        router.push('/dashboard')
+      } else {
+        const loggedInUser = await login({ phone, password });
+        showNotification("Welcome back " + loggedInUser.email, "success");
+        router.push("/dashboard");
+      }
+    } catch (err) {
+      if (err instanceof Error) {
+        console.error("Auth error:", err.message);
+        showNotification(err.message, "error");
+      } else {
+        console.error("Auth error:", err);
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return {
@@ -69,6 +103,7 @@ export default function useLoginForm() {
     setConfirmPassword,
     toggleForm,
     errors,
-    validateForm,
+    loading,
+    handleSubmit,
   };
 }

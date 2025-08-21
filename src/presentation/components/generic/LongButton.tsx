@@ -1,17 +1,23 @@
-import { TouchableOpacity, TouchableOpacityProps } from "react-native";
+import { ActivityIndicator, TouchableOpacity, TouchableOpacityProps } from "react-native";
 import Ptext from "./PoppinsText";
 
 type LongButtonProps = TouchableOpacityProps & {
   title: string;
+  loading?: boolean; // new prop
 };
 
-export default function LongButton({ title, style, ...rest }: LongButtonProps) {
+export default function LongButton({ title, loading = false, style, ...rest }: LongButtonProps) {
   return (
     <TouchableOpacity
-      className="w-full bg-accent py-3 rounded-lg items-center justify-center"
+      className="w-full bg-accent py-3 rounded-lg items-center justify-center flex-row"
+      disabled={loading} 
       {...rest}
     >
-      <Ptext className="text-white text-lg font-medium">{title}</Ptext>
+      {loading ? (
+        <ActivityIndicator size="small" color="white" />
+      ) : (
+        <Ptext className="text-white text-lg font-medium">{title}</Ptext>
+      )}
     </TouchableOpacity>
   );
 }
