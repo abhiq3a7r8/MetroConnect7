@@ -15,16 +15,16 @@ export default function useLoginForm() {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [loading, setLoading] = useState(false);
-  const { login, register } = useAuthContext();
-  const { showNotification } = useNotify();
-
   const [errors, setErrors] = useState({
     email: "",
     phone: "",
     password: "",
     confirmPassword: "",
   });
+
+  // ✅ Use loading from auth context
+  const { login, register, loading, setLoading } = useAuthContext();
+  const { showNotification } = useNotify();
 
   const toggleForm = () => {
     setIsSignUp(prev => !prev);
@@ -63,31 +63,25 @@ export default function useLoginForm() {
     return Object.values(newErrors).every(err => err === "");
   };
 
-    const handleSubmit = async () => {
-    const isValid = validateForm();
-    if (!isValid) return;
+  const handleSubmit = async () => {
+    if (!validateForm()) return;
 
     try {
-      setLoading(true);
+      setLoading(true); // ✅ use context loading
       if (isSignUp) {
         const newUser = await register({ email, phone, password });
         showNotification("Welcome " + newUser.email, "success");
-        
-        router.push('/dashboard')
+        router.push("/(tabs)");
       } else {
         const loggedInUser = await login({ phone, password });
         showNotification("Welcome back " + loggedInUser.email, "success");
-        router.push("/dashboard");
+        router.push("/(tabs)");
       }
     } catch (err) {
-      if (err instanceof Error) {
-        console.error("Auth error:", err.message);
-        showNotification(err.message, "error");
-      } else {
-        console.error("Auth error:", err);
-      }
+      if (err instanceof Error) showNotification(err.message, "error");
+      else console.error("Auth error:", err);
     } finally {
-      setLoading(false);
+      setLoading(false); // ✅ update context loading
     }
   };
 
@@ -103,7 +97,7 @@ export default function useLoginForm() {
     setConfirmPassword,
     toggleForm,
     errors,
-    loading,
+    loading, // from context
     handleSubmit,
   };
 }

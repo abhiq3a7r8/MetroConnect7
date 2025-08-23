@@ -41,5 +41,8 @@ modularization of code , cohesion and coupling
 
 AGENDA : - 
     - protected routes and protected screens 
+    - zap through the loading screen (optimize the app , the auth to get to dashboard in milliseconds)
     - JWT utilization 
+    - how about a local SQLite database for performance improving so that 
     - testing and error propogation 
+    - app loading performance

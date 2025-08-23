@@ -2,9 +2,16 @@ import { ReactNode } from "react";
 import { View } from "react-native";
 
 type CardProps = {
-  children: ReactNode;  
+  children: ReactNode;
+  bg?: string; // optional bg override
 };
 
-export default function ScreenWrapper({ children }: CardProps) {
-  return <View className="bg-white h-auto w-[90%] rounded-[10] justify-evenly items-center p-4 gap-4">{children}</View>;
+export default function Card({ children, bg = "bg-white" }: CardProps) {
+  return (
+    <View
+      className={`${bg} h-auto w-[90%] rounded-xl justify-evenly items-center p-4 gap-4`}
+    >
+      {children}
+    </View>
+  );
 }

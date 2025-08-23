@@ -11,7 +11,7 @@ export default function ProfileScreen() {
       <KeyboardScreenWrapper>
         <Card>
           <Header containerClassName="bg-green-200" title="Find your Profile" subtitle="choose an origin and destination"/>
-          <LongButton title="go to Dashboard" onPress={() => router.replace('/dashboard')}></LongButton>
+          <LongButton title="go to Dashboard" onPress={() => router.replace('/(tabs)')}></LongButton>
           
         </Card>
       </KeyboardScreenWrapper>

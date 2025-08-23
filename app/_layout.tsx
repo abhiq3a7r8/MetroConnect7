@@ -4,11 +4,11 @@ import {
   Poppins_700Bold,
   useFonts,
 } from "@expo-google-fonts/poppins";
-import { Stack } from "expo-router";
 import { Text, View } from "react-native";
 import "../global.css";
 import { AuthProvider } from "../src/core/providers/AuthProvider";
 import { NotificationProvider } from "../src/core/providers/Notification";
+import RootLayoutNav from "../src/core/providers/RootLayoutNav";
 
 export default function Layout() {
   const [fontsLoaded] = useFonts({
@@ -28,7 +28,7 @@ export default function Layout() {
   return (
     <AuthProvider>
       <NotificationProvider>
-          <Stack screenOptions={{ headerShown: false }} />
+          <RootLayoutNav />
       </NotificationProvider>
     </AuthProvider>
   );

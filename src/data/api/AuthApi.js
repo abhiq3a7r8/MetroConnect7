@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://192.168.105.160:3000/auth';
+const API_BASE_URL = 'http://192.168.241.160:3000/auth';
 
 export default {
   async register({ email, password, phone }) {

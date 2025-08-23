@@ -17,7 +17,7 @@ export default function Header({
   subtitleClassName,
 }: HeaderProps) {
   return (
-    <View className={`w-full px-4 mt-3 bg-white ${containerClassName ?? ""}`}>
+    <View className={`w-full mt-3 ${containerClassName ?? ""}`}>
       <Ptext className={`text-xl ${titleClassName ?? ""}`}>{title}</Ptext>
       {subtitle && (
         <Ptext className={`text-sm text-gray-500 ${subtitleClassName ?? ""}`}>
