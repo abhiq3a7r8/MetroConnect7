@@ -1,30 +1,22 @@
 import { Stack, useRouter } from "expo-router";
 import React, { useEffect } from "react";
-import { ActivityIndicator, View } from "react-native";
 import { useAuthContext } from "./AuthProvider";
 
 export default function RootLayoutNav() {
-  const { user, loading } = useAuthContext();
+  const { user, loading, error } = useAuthContext(); // 👈 assuming you expose loginError
   const router = useRouter();
 
   useEffect(() => {
-    if (!loading) { // only redirect once JWT restore is finished
-      if (user) {
-        router.replace("/(tabs)");
-      } else {
-        router.replace("/(auth)");
-      }
-    }
-  }, [user, loading]);
+    if (loading) return; // wait until finished loading
 
-  // Render a temporary splash/loading UI while auth is restoring
-  if (loading) {
-    return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <ActivityIndicator size="large" />
-      </View>
-    );
-  }
+    if (user) {
+      router.replace("/(tabs)");
+    } else if (!error) {
+      // only redirect to auth if this isn't an explicit login failure
+      router.replace("/(auth)");
+    }
+    // if loginError exists -> stay put
+  }, [user, loading, error]);
 
   return <Stack screenOptions={{ headerShown: false }} />;
 }

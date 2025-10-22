@@ -8,14 +8,14 @@ function AnimatedTabBarButton(props: any) {
 
   const handlePressIn = () => {
     Animated.spring(scale, {
-      toValue: 0.9, // shrink a bit
+      toValue: 0.9, 
       useNativeDriver: true,
     }).start();
   };
 
   const handlePressOut = () => {
     Animated.spring(scale, {
-      toValue: 1, // back to normal
+      toValue: 1, 
       friction: 3,
       useNativeDriver: true,
     }).start();

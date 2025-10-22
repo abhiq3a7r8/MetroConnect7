@@ -9,12 +9,13 @@ type LongButtonProps = TouchableOpacityProps & {
 export default function LongButton({ title, loading = false, style, ...rest }: LongButtonProps) {
   return (
     <TouchableOpacity
+      testID="long-button"
       className="w-full bg-accent py-3 rounded-lg items-center justify-center flex-row"
       disabled={loading} 
       {...rest}
     >
       {loading ? (
-        <ActivityIndicator size="small" color="white" />
+        <ActivityIndicator testID="activity-indicator" size="small" color="white" />
       ) : (
         <Ptext className="text-white text-lg font-medium">{title}</Ptext>
       )}

@@ -1,4 +1,4 @@
-import NotificationContainer from "@/src/presentation/components/generic/notification/NotificationContainer";
+import NotificationContainer from "@/presentation/components/generic/notification/NotificationContainer";
 import { createContext, ReactNode, useContext } from "react";
 import { useNotification } from "../../presentation/state/useNotification";
 
@@ -34,4 +34,3 @@ export const useNotify = () => {
   }
   return ctx;
 };
-

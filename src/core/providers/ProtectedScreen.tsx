@@ -1,8 +1,7 @@
-import ErrorScreen from "@/src/presentation/screens/ErrorScreen";
+import ErrorScreen from "@/presentation/screens/ErrorScreen";
 import { useRouter } from "expo-router";
-import React, { useEffect } from "react";
+import React from "react";
 import { useAuthContext } from "./AuthProvider";
-import { useNotify } from "./Notification";
 
 interface ProtectedScreenProps {
   children: React.ReactNode;
@@ -10,16 +9,7 @@ interface ProtectedScreenProps {
 
 export default function ProtectedScreen({ children }: ProtectedScreenProps) {
   const router = useRouter();
-  const { showNotification } = useNotify();
   const { user } = useAuthContext();
-
-  useEffect(() => {
-    if (!user) {
-      showNotification("Unauthorized access!", "error");
-      
-      
-    }
-  }, [user]);
 
   if (!user) {
     return (

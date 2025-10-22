@@ -1,7 +1,6 @@
-import { useAuthContext } from "@/src/core/providers/AuthProvider";
-import { useNotify } from "@/src/core/providers/Notification";
-import { router } from "expo-router";
 import { useState } from "react";
+import { useAuthContext } from "../../core/providers/AuthProvider";
+import { useNotify } from "../../core/providers/Notification";
 import {
   validateConfirmPassword,
   validateEmail,
@@ -22,7 +21,6 @@ export default function useLoginForm() {
     confirmPassword: "",
   });
 
-  // ✅ Use loading from auth context
   const { login, register, loading, setLoading } = useAuthContext();
   const { showNotification } = useNotify();
 
@@ -67,21 +65,21 @@ export default function useLoginForm() {
     if (!validateForm()) return;
 
     try {
-      setLoading(true); // ✅ use context loading
+      setLoading(true);
       if (isSignUp) {
         const newUser = await register({ email, phone, password });
         showNotification("Welcome " + newUser.email, "success");
-        router.push("/(tabs)");
       } else {
         const loggedInUser = await login({ phone, password });
-        showNotification("Welcome back " + loggedInUser.email, "success");
-        router.push("/(tabs)");
+        if (loggedInUser) {
+          showNotification("Welcome back " + loggedInUser.email, "success");
+        }
       }
     } catch (err) {
       if (err instanceof Error) showNotification(err.message, "error");
       else console.error("Auth error:", err);
     } finally {
-      setLoading(false); // ✅ update context loading
+      setLoading(false); 
     }
   };
 
@@ -99,5 +97,6 @@ export default function useLoginForm() {
     errors,
     loading, // from context
     handleSubmit,
+    validateForm, // Expose validateForm for testing
   };
 }
