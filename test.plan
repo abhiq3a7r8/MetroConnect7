@@ -1,0 +1,46 @@
+__tests__/
+├── core
+│   └── providers
+│       ├── AuthProvider.test.tsx
+│       ├── ProtectedScreen.test.tsx
+│       └── Notification.test.tsx
+│
+├── data
+│   ├── api
+│   │   └── AuthApi.test.js
+│   └── repositories
+│       └── UserRepository.test.js
+│
+├── domain
+│   ├── usecases
+│   │   ├── LoginUser.test.js
+│   │   └── RegisterUser.test.js
+│   └── entities
+│       ├── User.test.js
+│       └── Notification.test.js
+│
+├── presentation
+│   ├── components
+│   │   ├── generic
+│   │   │   ├── LongButton.test.tsx
+│   │   │   ├── TextInput.test.tsx
+│   │   │   └── notification
+│   │   │       └── Notification.test.tsx
+│   │   └── specific
+│   │       ├── LoginBox.test.tsx
+│   │       └── SignUpPrompt.test.tsx
+│   │
+│   ├── screens
+│   │   ├── LoginScreen.test.tsx
+│   │   ├── DashboardScreen.test.tsx
+│   │   ├── ProfileScreen.test.tsx
+│   │   └── ErrorScreen.test.tsx
+│   │
+│   └── state
+│       ├── useAuth.test.js
+│       ├── useLoginForm.test.js
+│       └── useNotification.test.js
+│
+└── shared
+    └── utils
+        └── Validation.test.js
